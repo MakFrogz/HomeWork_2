@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RSG;
 
 namespace Assets.Scripts.Api
 {
     public interface IDataManager
     {
-        PlayerModelDto LoadModelData();
+        PlayerStatsModelDto LoadModelData();
 
-        void Save(PlayerModelDto dto);
+        IPromise<string> Save(PlayerStatsModelDto dto);
     }
 }

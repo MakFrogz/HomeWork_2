@@ -1,0 +1,19 @@
+{
+    "name": "Composition",
+    "references": [
+        "GUID:3a9706c53e6a9cc4796d9bbdd6b1f1a5",
+        "GUID:0ed464fb4fc865149af33995529331c9",
+        "GUID:e9f9f9b5248bee84ea22963cda4bcdc2",
+        "GUID:b1dea996763e5474eaad958939518e80",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

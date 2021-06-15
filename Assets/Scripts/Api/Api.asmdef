@@ -1,0 +1,15 @@
+{
+    "name": "Api",
+    "references": [
+        "GUID:56e9708e6bc55be499ec18c0cde097b5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
