@@ -16,7 +16,7 @@ namespace Assets.Scripts.Infrastructure
 {
     public class RemoteDataManager : IDataManager
     {
-        private string address = "";
+        private string address = "https://raw.githubusercontent.com/MakFrogz/HomeWork_2/master/Assets/data.json";
 
         [Inject]
         private ICoroutineService _coroutineService;
@@ -26,14 +26,15 @@ namespace Assets.Scripts.Infrastructure
             throw new NotImplementedException();
         }
 
-        public IPromise<string> Save(PlayerStatsModelDto dto)
+        public IPromise Save(PlayerStatsModelDto dto)
         {
-            var p = new Promise<string>();
+            var p = new Promise();
             _coroutineService.RunCoroutine(SaveData(dto, (isSuccess, message) =>
             {
                 if (isSuccess)
                 {
-                    p.Resolve(message);
+                    Debug.Log(message);
+                    p.Resolve();
                 }
                 else
                 {

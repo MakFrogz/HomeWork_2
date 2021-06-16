@@ -12,6 +12,7 @@ using UnityEngine;
 using GizmoExercises.Lifetime.Services;
 using Assets.Scripts.Models;
 using Assets.Scripts.Popups;
+using Assets.Scripts.Game;
 
 namespace Assets.Scripts.Installers
 {
@@ -32,6 +33,9 @@ namespace Assets.Scripts.Installers
         [SerializeField]
         private ScriptableObject _playerStatsModelSO;
 
+        [SerializeField]
+        private StateAnimationHandler _coin;
+
         public override void InstallBindings()
         {
             Container
@@ -48,7 +52,20 @@ namespace Assets.Scripts.Installers
 
             Container
                 .Bind<IDataManager>()
+                .WithId("local")
                 .To<LocalDataManager>()
+                .AsSingle();
+
+            Container
+                .Bind<IDataManager>()
+                .WithId("remote")
+                .To<RemoteDataManager>()
+                .AsSingle();
+
+            Container
+                .Bind<IStateAnimationHandler>()
+                .To<StateAnimationHandler>()
+                .FromInstance(_coin)
                 .AsSingle();
 
             Container

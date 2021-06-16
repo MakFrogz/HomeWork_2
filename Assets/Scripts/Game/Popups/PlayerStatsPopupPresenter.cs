@@ -18,8 +18,11 @@ namespace Assets.Scripts.Popups
         [Inject]
         private IPlayerStatsModel _playerModel;
 
-        [Inject]
-        private IDataManager _dataManager;
+        [Inject(Id ="remote")]
+        private IDataManager _remoteDataManager;
+
+        [Inject(Id = "local")]
+        private IDataManager _localDataManager;
 
         [Inject]
         private PlayerStatsPopup _view;
@@ -36,8 +39,15 @@ namespace Assets.Scripts.Popups
         private void OnButtonClickSave(PlayerStatsModelDto dto)
         {
             _playerModel.FromDto(dto);
-            _dataManager.Save(dto)
-                .Then(message => Debug.Log(message));
+            Promise.Sequence(
+                () => _localDataManager.Save(dto),
+                () => _remoteDataManager.Save(dto)
+                ).Catch(err => Debug.LogError(err));
+
+            Promise.All(
+                _localDataManager.Save(dto),
+                _remoteDataManager.Save(dto)
+                ).Catch(err => Debug.LogError(err));
         }
     }
 }

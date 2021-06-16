@@ -12,6 +12,6 @@ namespace Assets.Scripts.Api
     {
         PlayerStatsModelDto LoadModelData();
 
-        IPromise<string> Save(PlayerStatsModelDto dto);
+        IPromise Save(PlayerStatsModelDto dto);
     }
 }

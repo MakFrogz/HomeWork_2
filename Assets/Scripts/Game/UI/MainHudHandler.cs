@@ -4,6 +4,8 @@ using GizmoExercises.Popups;
 using TMPro;
 using UnityEngine;
 using Zenject;
+using RSG;
+using Assets.Scripts.Api;
 
 namespace GizmoExercises.UI
 {
@@ -41,6 +43,9 @@ namespace GizmoExercises.UI
 
         [Inject(Id = "game_version")]
         private string _gameVersion;
+
+        [Inject]
+        private IStateAnimationHandler _stateAnimationHandler;
 
         #endregion
 
@@ -88,6 +93,12 @@ namespace GizmoExercises.UI
         public void OnPlayerStatsButtonClick()
         {
             _playerStatsPopupFactory.Create();
+        }
+
+        public void OnRotateClick()
+        {
+            _stateAnimationHandler.PlayAnimation()
+                .Then(() => Debug.Log("Animation ended"));
         }
         
         #endregion

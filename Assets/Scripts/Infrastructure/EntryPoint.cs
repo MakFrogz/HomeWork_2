@@ -20,7 +20,7 @@ namespace Assets.Scripts.Infrastructure
         [Inject]
         private IPlayerStatsModel _playerStatsModel;
 
-        [Inject]
+        [Inject(Id = "local")]
         private IDataManager _dataManager;
 
         public void Initialize()
