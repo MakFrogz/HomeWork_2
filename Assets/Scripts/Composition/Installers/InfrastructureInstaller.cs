@@ -79,6 +79,10 @@ namespace Assets.Scripts.Installers
                 .UnderTransform(_canvasTransform);
 
             Container
+                .BindFactory<AnimationEndNotifyCommand, AnimationEndNotifyCommand.Factory>()
+                .AsSingle();
+
+            Container
                 .BindInterfacesAndSelfTo<EntryPoint>()
                 .AsSingle()
                 .NonLazy();

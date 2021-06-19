@@ -6,6 +6,7 @@ using UnityEngine;
 using Zenject;
 using RSG;
 using Assets.Scripts.Api;
+using Assets.Scripts.Infrastructure;
 
 namespace GizmoExercises.UI
 {
@@ -44,8 +45,11 @@ namespace GizmoExercises.UI
         [Inject(Id = "game_version")]
         private string _gameVersion;
 
+        /*[Inject]
+        private IStateAnimationHandler _stateAnimationHandler;*/
+
         [Inject]
-        private IStateAnimationHandler _stateAnimationHandler;
+        private AnimationEndNotifyCommand.Factory _factory;
 
         #endregion
 
@@ -97,8 +101,9 @@ namespace GizmoExercises.UI
 
         public void OnRotateClick()
         {
-            _stateAnimationHandler.PlayAnimation()
-                .Then(() => Debug.Log("Animation ended"));
+            /*_stateAnimationHandler.PlayAnimation()
+                .Done(() => Debug.Log("Animation ended"));*/
+            _factory.Create().Execute();
         }
         
         #endregion

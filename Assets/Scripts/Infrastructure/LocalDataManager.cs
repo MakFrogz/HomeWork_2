@@ -38,21 +38,6 @@ namespace Assets.Scripts.Infrastructure
             return JsonUtility.FromJson<PlayerStatsModelDto>(dtoJson);
         }
 
-
-        /*public void Save(PlayerStatsModelDto dto)
-        {
-            var dtoJson = JsonUtility.ToJson(dto);
-            try
-            {
-                PlayerPrefs.SetString(PLAYER_STATS_KEY, dtoJson);
-                PlayerPrefs.Save();
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error has occured: {e.Message}");
-            }
-        }*/
-
         public IPromise Save(PlayerStatsModelDto dto)
         {
             var p = new Promise();

@@ -22,6 +22,7 @@ namespace Assets.Scripts.Game
         #region Fields
         private Animator _animator;
         private AnimatorStateNotifications notifier;
+        private Action action;
         #endregion
 
         #region Methods
@@ -35,10 +36,9 @@ namespace Assets.Scripts.Game
         public IPromise PlayAnimation()
         {
             var p = new Promise();
-            _coroutineService.RunCoroutine(PlayRotateAnimation(() =>
-            {
-                p.Resolve();
-            }));
+            notifier.OnStateExitEvent -= action;
+            action = () => p.Resolve();
+            _coroutineService.RunCoroutine(PlayRotateAnimation(action));
             return p;
         }
 
@@ -48,6 +48,8 @@ namespace Assets.Scripts.Game
             notifier.OnStateExitEvent += callback;
             yield return null;
         }
+
+
         #endregion
     }
 }
